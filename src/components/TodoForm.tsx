@@ -7,7 +7,7 @@ const TodoForm: FC = () => {
         tagId: 1
     });
     useEffect(() => {
-        dispatch({ type: "FETCHTAGS" })
+        dispatch({ type: "FETCHTAGS",action: { payload: state.jwt }  })
     }, [])
     const handleChange = (e) => {
         setValues(values => ({ ...values, title: e.target.value }));

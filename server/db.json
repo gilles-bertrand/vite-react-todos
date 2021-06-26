@@ -11,49 +11,21 @@
   ],
   "todos": [
     {
-      "id": 1,
-      "title": "Test de todo",
-      "tagId": 1
-    },
-    {
-      "id": 2,
-      "title": "Test de todo 2",
-      "tagId": 2
-    },
-    {
-      "id": 3,
-      "title": "Test de todo 3",
-      "tagId": 1
-    },
-    {
-      "title": "dsqfqd",
+      "title": "gilles",
       "tagId": "2",
-      "id": 4
+      "id": 1
     },
     {
-      "title": "sqdfdsf",
-      "tagId": 1,
-      "id": 5
-    },
+      "title": "berbard",
+      "tagId": "1",
+      "id": 2
+    }
+  ],
+  "users": [
     {
-      "title": "sqdfdsfdfdsqfqsdfdsq",
-      "tagId": "2",
-      "id": 6
-    },
-    {
-      "title": "sqdfdsfdfdsqfqsdfdsq",
-      "tagId": "2",
-      "id": 7
-    },
-    {
-      "title": "sqdfdsfdfdsqfqsdfdsq",
-      "tagId": "2",
-      "id": 8
-    },
-    {
-      "title": "sqdfdsfdfdsqfqsdfdsq",
-      "tagId": "2",
-      "id": 9
+      "email": "gilles@triptyk.eu",
+      "password": "$2a$10$ksQmOo5CAl2qeqkNUxV9KelJRMfzTNXDSdS5IwFU9PPhO0v9S.Cby",
+      "id": 1
     }
   ]
 }

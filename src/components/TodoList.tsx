@@ -1,12 +1,13 @@
 import React, { FC, useContext, useEffect } from "react";
+import {RouteComponentProps} from '@reach/router';
 import { storeContext } from "../Store";
 import TodoForm from "./TodoForm";
 import TodoItem from "./TodoItem";
-const TodoList: FC = () => {
+const TodoList: FC<RouteComponentProps> = () => {
     const { state, dispatch } = useContext(storeContext)
 
     useEffect(() => {
-        dispatch({ type: 'FETCHTODOS' });
+        dispatch({ type: 'FETCHTODOS',action: { payload: state.jwt } });
     }, [])
 
     return (
