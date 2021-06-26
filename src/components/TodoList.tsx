@@ -6,7 +6,7 @@ const TodoList: FC = () => {
     const { state, dispatch } = useContext(storeContext)
 
     useEffect(() => {
-        dispatch({ type: 'GET_TODOS' });
+        dispatch({ type: 'FETCH' });
     }, [])
 
     return (
@@ -18,7 +18,7 @@ const TodoList: FC = () => {
             <div className="flex justify-center mt-8">
                 <div className="bg-white shadow-xl rounded-lg w-1/2 max-w-2xl">
                     <ul className="divide-y divide-gray-300">
-                        <TodoItem />
+                        {  state.todos.map((value,index)=> <TodoItem key={index} todo={value}/>)}   
                     </ul>
                 </div>
             </div>

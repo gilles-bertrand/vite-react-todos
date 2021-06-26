@@ -1,0 +1,23 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Test de todo",
+      "createdAt": "03/05/1974",
+      "updatedAt": "03/05/1974"
+    },
+    {
+      "id": 2,
+      "title": "Test de todo 2",
+      "createdAt": "03/05/1974",
+      "updatedAt": "03/05/1974"
+    }
+  ],
+  "users": [
+    {
+      "email": "gilles@triptyk.eu",
+      "password": "$2a$10$G5OtZiB7e0arE9C2S84VK.PmwAcIv2d6PNFgHGS2.JKPy/HHJRrw6",
+      "id": 1
+    }
+  ]
+}

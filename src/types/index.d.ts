@@ -14,11 +14,15 @@ interface Todo {
 
 // Discriminating Union
 type Action =
+    | Fetch
     | GetTodos
     | SetTodos
     | SucceedRequestAction
     | FailRequestAction
 
+interface Fetch {
+    type: 'FETCH'
+}
 interface GetTodos {
     type: 'GET_TODOS'
 }

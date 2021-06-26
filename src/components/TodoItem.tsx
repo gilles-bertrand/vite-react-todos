@@ -1,5 +1,7 @@
 import React, { FC } from "react"
-const TodoItem: FC = () => {
+import { Todo } from "../types";
+
+const TodoItem: FC<{todo:Todo}> = ({todo}) => {
     return (
         <li className="p-4 hover:bg-gray-50 cursor-pointer flex items-center justify-between">
             <a href="edit_todo.html" className="w-full flex items-center justify-between">
@@ -10,7 +12,7 @@ const TodoItem: FC = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                             d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    Drink beers with the dream team
+                    {todo.title}
                     <span className="text-xs rounded-lg bg-green-300 text-green-800 ml-4 px-3 py-1">Sport</span>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 fill-current text-blue-700 ml-8" fill="none"

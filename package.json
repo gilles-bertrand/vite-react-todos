@@ -2,13 +2,15 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "json-server --watch --port 3004 db.json & vite",
+    "dev": "json-server-auth --watch --port 3004 server/db.json -r server/routes.json & vite",
     "build": "tsc && vite build",
     "serve": "vite preview"
   },
   "dependencies": {
+    "json-server-auth": "^2.0.2",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "use-reducer-async": "^2.0.1"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.3.3",
