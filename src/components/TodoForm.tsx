@@ -15,9 +15,9 @@ const TodoForm: FC = () => {
                     className="ml-3 relative inline-flex items-center px-2 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                     <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                         aria-hidden="true">
-                        <path fill-rule="evenodd"
+                        <path fillRule="evenodd"
                             d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                            clip-rule="evenodd" />
+                            clipRule="evenodd" />
                     </svg>
                 </button>
             </div>
@@ -26,7 +26,7 @@ const TodoForm: FC = () => {
                 <select id="location" name="location"
                     className="mt-1 block w-full pl-3 pr-32 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
                     <option>House</option>
-                    <option selected>Work</option>
+                    <option>Work</option>
                     <option>Sport</option>
                 </select>
             </div>
