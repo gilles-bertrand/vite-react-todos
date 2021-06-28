@@ -3,38 +3,44 @@ import React, { Dispatch } from 'react'
 type Context = { state: State; dispatch: Dispatch<Action> }
 
 interface State {
-    todos: Todo[]
+    tags: Tag[],
+    todos: Todo[],
     isLoading: boolean,
     error: string | null,
 }
 
 interface Todo {
-    title: string
+    id: any,
+    title: string,
+    tag: { name: string }
+}
+interface Tag {
+    id: any,
+    name: string
 }
 
 // Discriminating Union
 type Action =
-    | Fetch
-    | GetTodos
+    | FetchTodos
     | SetTodos
-    | SucceedRequestAction
-    | FailRequestAction
+    | AddTodo
+    | SetTags
+    | FetchTags
 
-interface Fetch {
-    type: 'FETCH'
+interface AddTodo {
+    type: 'ADDTODO',
+    action: { payload: any }
 }
-interface GetTodos {
-    type: 'GET_TODOS'
+interface FetchTodos {
+    type: 'FETCHTODOS'
+}
+interface FetchTags {
+    type: 'FETCHTAGS'
+}
+interface SetTags {
+    type: 'SET_TAGS'
 }
 interface SetTodos {
     type: 'SET_TODOS'
-    payload: Todo[]
 }
-interface SucceedRequestAction {
-    type: 'SUCCEED_REQUEST'
-    payload: Todo
-}
-interface FailRequestAction {
-    type: 'FAIL_REQUEST'
-    payload: string
-}
+

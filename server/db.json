@@ -1,23 +1,59 @@
 {
+  "tags": [
+    {
+      "id": 1,
+      "name": "sport"
+    },
+    {
+      "id": 2,
+      "name": "study"
+    }
+  ],
   "todos": [
     {
       "id": 1,
       "title": "Test de todo",
-      "createdAt": "03/05/1974",
-      "updatedAt": "03/05/1974"
+      "tagId": 1
     },
     {
       "id": 2,
       "title": "Test de todo 2",
-      "createdAt": "03/05/1974",
-      "updatedAt": "03/05/1974"
-    }
-  ],
-  "users": [
+      "tagId": 2
+    },
     {
-      "email": "gilles@triptyk.eu",
-      "password": "$2a$10$G5OtZiB7e0arE9C2S84VK.PmwAcIv2d6PNFgHGS2.JKPy/HHJRrw6",
-      "id": 1
+      "id": 3,
+      "title": "Test de todo 3",
+      "tagId": 1
+    },
+    {
+      "title": "dsqfqd",
+      "tagId": "2",
+      "id": 4
+    },
+    {
+      "title": "sqdfdsf",
+      "tagId": 1,
+      "id": 5
+    },
+    {
+      "title": "sqdfdsfdfdsqfqsdfdsq",
+      "tagId": "2",
+      "id": 6
+    },
+    {
+      "title": "sqdfdsfdfdsqfqsdfdsq",
+      "tagId": "2",
+      "id": 7
+    },
+    {
+      "title": "sqdfdsfdfdsqfqsdfdsq",
+      "tagId": "2",
+      "id": 8
+    },
+    {
+      "title": "sqdfdsfdfdsqfqsdfdsq",
+      "tagId": "2",
+      "id": 9
     }
   ]
 }
