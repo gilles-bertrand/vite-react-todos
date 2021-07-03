@@ -13,6 +13,7 @@ function App() {
   }, [state])
   return (
     <div className="App">
+      <span className="text-xs text-red-500">Version :0.0.1</span>
       <Error />
       <Router>
         <Login path="/" />
