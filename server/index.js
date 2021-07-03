@@ -7,6 +7,6 @@ server.db = router.db;
 server.use(middlewares);
 server.use(auth)
 server.use(router);
-server.listen(process.env.port || 3004, () => {
+server.listen(process.env.PORT || 3004, () => {
     console.log('JSON SERVER is running')
 })
