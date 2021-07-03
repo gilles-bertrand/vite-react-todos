@@ -2,10 +2,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "json-server-auth --watch --port 3004 server/db.json -r server/routes.json & vite",
+    "dev": "cd server && node index.js & vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "e2e" :"cypress open"
+    "e2e": "cypress open"
   },
   "dependencies": {
     "@reach/router": "^1.3.4",
