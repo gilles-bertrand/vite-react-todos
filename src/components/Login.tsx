@@ -1,20 +1,20 @@
 import { RouteComponentProps } from '@reach/router';
-import React, { FC, useContext, useState } from 'react'
+import React, { ChangeEvent, FC, FormEvent, ReactEventHandler, useContext, useState } from 'react'
 import { storeContext } from '../Store';
 
 const Login: FC<RouteComponentProps> = () => {
     const  {state,dispatch} = useContext(storeContext)
     const [user,setUser] = useState({email:'',password:''});
-    const handleChange =(e)=>{
+    const handleChange =(e:ChangeEvent<HTMLInputElement>)=>{
         const {name,value} = e.target;
         setUser(prevUser => ({
             ...prevUser,
             [name]:value
         }))
     }
-    const submitHandler = (e)=>{
+    const submitHandler = (e:FormEvent)=>{
         e.preventDefault();
-        dispatch({type:"LOGIN", action:{payload:user}})
+        dispatch({type:"LOGIN", payload:user})
     }
     return (
         <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -60,6 +60,7 @@ const Login: FC<RouteComponentProps> = () => {
                         <div className="flex justify-center w-full">
 
                             <button type="button"
+                                // className="btn">
                                 className="flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                 Create an account
                             </button>

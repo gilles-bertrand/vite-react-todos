@@ -40,41 +40,44 @@ type Action =
 
 interface DeleteTodo {
     type: 'DELETETODO',
-    action: { payload: any }
+    payload:any
 }
 interface AddTodo {
     type: 'ADDTODO',
-    action: { payload: any }
+    payload:{}
 }
 interface FetchTodos {
     type: 'FETCHTODOS',
-    action:{payload:any}
+    payload:any
 }
 interface FetchTags {
     type: 'FETCHTAGS',
-    action:{payload:any}
+    payload:any
 }
 interface SetTags {
-    type: 'SET_TAGS'
+    type: 'SET_TAGS',
+    payload:Tag[],
+    
 }
 interface SetTodos {
     type: 'SET_TODOS',
-    action:{payload:any}
+    payload:Todo[]
 }
 interface SetJwt {
     type: 'SET_JWT',
-    action:{payload:any}
+    payload:string
 }
 interface SetError {
     type: 'SET_ERROR',
-    action:{payload:any}
+    payload:string
 }
 
 interface SetTodo {
-    type: 'SET_TODO'
+    type: 'SET_TODO',
+    payload:Todo
 }
 
 interface Login {
     type: 'LOGIN',
-    action:{payload:any}
+    payload:any
 }

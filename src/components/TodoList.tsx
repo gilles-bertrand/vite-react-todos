@@ -7,7 +7,7 @@ const TodoList: FC<RouteComponentProps> = () => {
     const { state, dispatch } = useContext(storeContext)
 
     useEffect(() => {
-        dispatch({ type: 'FETCHTODOS',action: { payload: state.jwt } });
+        dispatch({ type: 'FETCHTODOS', payload: state.jwt  });
     }, [])
 
     return (

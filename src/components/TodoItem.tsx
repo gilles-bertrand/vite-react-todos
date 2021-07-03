@@ -1,12 +1,12 @@
-import React, { FC, useContext } from "react"
+import React, { FC, MouseEvent, useContext } from "react"
 import { storeContext } from "../Store";
 import { Todo } from "../types";
 
 const TodoItem: FC<{ todo: Todo }> = ({ todo }) => {
     
     const { state, dispatch } = useContext(storeContext)
-    const handleDelete = (e)=>{
-        dispatch({type:'DELETETODO', action:todo.id})
+    const handleDelete = (e:MouseEvent)=>{
+        dispatch({type:'DELETETODO', payload:{id:todo.id, token:state.jwt}})
     }
     return (
         <li className="p-4 hover:bg-gray-50 flex items-center justify-between">

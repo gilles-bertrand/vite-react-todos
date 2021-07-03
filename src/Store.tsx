@@ -1,7 +1,7 @@
 import { navigate } from '@reach/router'
-import React, { createContext, useReducer, PropsWithChildren } from 'react'
+import React, { createContext, useReducer, PropsWithChildren, Dispatch } from 'react'
 import { useReducerAsync } from 'use-reducer-async'
-import { Action, Context, State } from './types'
+import { Action, Context, State, Todo } from './types'
 const initialStoreContext: Context = {
     state: {
         jwt:'',
@@ -28,19 +28,19 @@ const reducer = (state: State, action: Action): State => {
                 console.log('SET_ERROR')
                 return { ...state, isLoading: true, error: action.payload }
         default:
-            return assertNever(action);
+            return state;
     }
 }
 
-const asyncActionHandler = {
-    FETCHTAGS: ({ dispatch }) => async (action) => {
+const asyncActionHandler:any = {
+    FETCHTAGS: ({dispatch} : {dispatch:({}:Action)=>{}}) => async (action:Action) => {
         console.log('FetchTags')
         const settings = {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${action.action.payload}`
+                'Authorization': `Bearer ${action.payload}`
             },
         };
         try{
@@ -52,40 +52,49 @@ const asyncActionHandler = {
         }
        
     },
-    FETCHTODOS: ({ dispatch }) => async (action) => {
+    FETCHTODOS: ({dispatch} : {dispatch:({}:Action)=>{}}) => async (action:Action) => {
         console.log('FetchTodos')
         const settings = {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${action.action.payload}`
+                'Authorization': `Bearer ${action.payload}`
             },
         };
         try{
             const response = await fetch('http://localhost:3004/todos?_expand=tag',settings);
             const todos = await response.json();
-            dispatch({ type: 'SET_TODOS', payload: todos });
+           dispatch({ type: 'SET_TODOS', payload: todos });
         }catch(e){
             console.log(e)
         }
        
 
     },
-    ADDTODO: ({ dispatch }) => async (action) => {
+    ADDTODO: ({dispatch} : {dispatch:({}:Action)=>{}}) => async (action:Action) => {
         console.log('Add Todo')
         const settings = {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${action.payload.token}`
             },
-            body: JSON.stringify(action.action.payload)
-
+            body: JSON.stringify(action.payload.values)
         };
+        
         try {
+            const settings_get = {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${action.payload.token}`
+                }
+            };
             await fetch('http://localhost:3004/todos', settings);
-            const response = await fetch('http://localhost:3004/todos?_expand=tag');
+            const response = await fetch('http://localhost:3004/todos?_expand=tag',settings_get);
             const todos = await response.json();
             dispatch({ type: 'SET_TODOS', payload: todos });
         } catch (e) {
@@ -93,19 +102,28 @@ const asyncActionHandler = {
         }
 
     },
-    DELETETODO: ({ dispatch }) => async (payload) => {
+    DELETETODO: ({dispatch} : {dispatch:({}:Action)=>{}}) => async (action:Action) => {
         console.log('Delete Todo')
         const settings = {
             method: 'DELETE',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
-            }
+                'Authorization': `Bearer ${action.payload.token}`
+            },
 
         };
         try {
-            await fetch(`http://localhost:3004/todos/${payload.action}`, settings);
-            const response = await fetch('http://localhost:3004/todos?_expand=tag');
+            await fetch(`http://localhost:3004/todos/${action.payload.id}`, settings);
+            const settings_get = {
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${action.payload.token}`
+                },
+    
+            };
+            const response = await fetch('http://localhost:3004/todos?_expand=tag', settings_get);
             const todos = await response.json();
             dispatch({ type: 'SET_TODOS', payload: todos });
 
@@ -114,7 +132,7 @@ const asyncActionHandler = {
         }
 
     },
-    LOGIN:({ dispatch }) => async (payload) => {
+    LOGIN:({dispatch} : {dispatch:({}:Action)=>{}}) => async (action:Action) => {
         console.log('LOGIN');
         const settings = {
             method: 'POST',
@@ -122,7 +140,7 @@ const asyncActionHandler = {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(payload.action.payload)
+            body: JSON.stringify(action.payload)
         };
         try {
             const response = await fetch('http://localhost:3004/login', settings);

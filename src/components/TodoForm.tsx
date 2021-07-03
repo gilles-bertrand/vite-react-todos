@@ -1,22 +1,22 @@
-import React, { FC, useContext, useEffect, useState } from "react";
+import React, { ChangeEvent, FC, useContext, useEffect, useState, MouseEvent } from "react";
 import { storeContext } from "../Store";
 const TodoForm: FC = () => {
     const { state, dispatch } = useContext(storeContext)
-    const [values, setValues] = useState({
+    const [values, setValues] = useState<{title:string,tagId:number}>({
         title: '',
         tagId: 1
     });
     useEffect(() => {
-        dispatch({ type: "FETCHTAGS",action: { payload: state.jwt }  })
+        dispatch({ type: "FETCHTAGS",payload: state.jwt   })
     }, [])
-    const handleChange = (e) => {
+    const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
         setValues(values => ({ ...values, title: e.target.value }));
     }
-    const handleChangeTag = (e) => {
-        setValues(values => ({ ...values, tagId: e.target.value }));
+    const handleChangeTag = (e:ChangeEvent<HTMLSelectElement>) => {
+        setValues(values => ({ ...values, tagId: parseInt(e.target.value) } ));
     }
-    const handleClick = (e) => {
-        dispatch({ type: 'ADDTODO', action: { payload: values } })
+    const handleClick = (e:MouseEvent) => {
+        dispatch({ type: 'ADDTODO', payload:{ values, token:state.jwt } })
     }
     return (
         <div className="flex justify-center items-center mt-8">
@@ -28,7 +28,7 @@ const TodoForm: FC = () => {
                             value={values.title}
                             onChange={handleChange}
                             className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-                            placeholder="Send email to ..." />
+                            placeholder="My best task ..." />
                     </div>
                 </div>
                 <button type="button"
