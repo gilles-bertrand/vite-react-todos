@@ -5,7 +5,8 @@
     "dev": "cd server && node index.js & vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "e2e": "cypress open"
+    "e2e": "cypress open",
+    "deploy back":"git subtree push --prefix server heroku master "
   },
   "dependencies": {
     "@reach/router": "^1.3.4",
