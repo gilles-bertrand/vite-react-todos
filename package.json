@@ -2,14 +2,14 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "json-server-auth --watch --port 3004 server/db.json -r server/routes.json & vite",
+    "dev": "cd server && node index.js & vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "e2e" :"cypress open"
+    "e2e": "cypress open",
+    "deploy back":"git subtree push --prefix server heroku master "
   },
   "dependencies": {
     "@reach/router": "^1.3.4",
-    "json-server-auth": "^2.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "use-reducer-async": "^2.0.1"
@@ -22,7 +22,6 @@
     "@vitejs/plugin-react-refresh": "^1.3.3",
     "autoprefixer": "^10.2.6",
     "cypress": "^7.6.0",
-    "json-server": "^0.16.3",
     "postcss": "^8.3.5",
     "tailwindcss": "^2.2.4",
     "typescript": "^4.3.2",
